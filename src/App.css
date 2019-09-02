@@ -1,0 +1,49 @@
+#calculator {
+    --key-width: 50px;
+    --key-height: 40px;
+    --padding: 15px;
+
+    width: calc(var(--key-width) * 4 + 30px);
+    position: relative;
+    top: 20vh;
+    background-color: aliceblue;
+    padding-bottom: var(--padding);
+    padding-top: var(--padding);
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+}
+
+#display, input {
+    width: 100%;
+    text-align: right;
+}
+
+.key {
+    box-sizing: border-box;
+    width: var(--key-width);
+    height: var(--key-height);
+    color: white;
+}
+
+.clear {
+    background-color: chocolate;
+    width: calc(var(--key-width) * 2);
+}
+
+#zero {
+    width: calc(var(--key-width) * 2);
+}
+
+#equals {
+    height: calc(var(--key-height) * 2);
+    position: absolute;
+    bottom: var(--padding);
+    background-color: coral;
+}
+
+.nums {
+    background-color: grey;
+}
+
+.ops {
+    background-color: cadetblue;
+}
