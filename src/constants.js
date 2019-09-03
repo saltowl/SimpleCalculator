@@ -1,12 +1,10 @@
 export const INITIAL_STATE = {
     'rootReducer': {
-        'currentString': '',
-        'result': 0,
-        'input': ''
+        'formula': 0,
+        'input': 0,
+        'isPrevCalculate': false
     }
 };
-
-export const primaryOrder = '*/';
 
 function CreateKey(name, id, className) {
     return {
@@ -18,7 +16,7 @@ function CreateKey(name, id, className) {
 export const keyboard = [
     CreateKey('AC', 'clear', 'clear'),
     CreateKey('/', 'divide', 'ops'),
-    CreateKey('x', 'multiply', 'ops'),
+    CreateKey('*', 'multiply', 'ops'),
     CreateKey('7', 'seven', 'nums'),
     CreateKey('8', 'eight', 'nums'),
     CreateKey('9', 'nine', 'nums'),
@@ -34,3 +32,8 @@ export const keyboard = [
     CreateKey('.', 'decimal', 'nums'),
     CreateKey('=', 'equals', 'equals'),
 ];
+
+export const ADD_NUM = 'ADD_NUM';
+export const ADD_OP = 'ADD_OP';
+export const ERASE = 'ERASE';
+export const SOLVE = 'SOLVE';

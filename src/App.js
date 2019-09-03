@@ -11,7 +11,13 @@ class App extends React.Component {
   render () {
     return (
         <div className="App">
-          <Calculator currentString={this.props.currentString} result={this.props.result}/>
+          <Calculator
+              formula={this.props.formula}
+              result={this.props.result}
+              input={this.props.input}
+              handleClick={this.props.handleClick}
+              solve={this.props.solve}
+          />
         </div>
     );
   }
