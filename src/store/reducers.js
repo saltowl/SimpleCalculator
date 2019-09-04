@@ -28,6 +28,9 @@ function rootReducer(state = cnst.INITIAL_STATE, action = {'type': 'default'}) {
 
         case cnst.ADD_OP:
             newState.addDecimal = false;
+            if (/[+*-/]$/.test(state.formula) && action.input !== '-') {
+                newState.formula = state.formula.replace(/[+-/*]+$/, '');
+            }
             if (state.isPrevCalculate) {
                 newState.formula = state.input;
             }
