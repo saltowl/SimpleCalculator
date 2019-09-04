@@ -9,6 +9,14 @@ class Calculator extends React.Component {
         this.solve = this.solve.bind(this);
     }
 
+    componentDidMount() {
+        document.addEventListener('keydown', this.props.handleKeyPress);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.props.handleKeyPress);
+    }
+
     solve() {
         this.props.solve(this.props.formula);
     }
@@ -16,7 +24,17 @@ class Calculator extends React.Component {
     render() {
         const keyboardComponent = keyboard.map((obj, index) => {
             const handleClick = obj.name !== '=' ? this.props.handleClick : this.solve;
-            return (<Key name={obj.name} id={obj.id} class={obj.className} key={index} handleClick={handleClick}/>);
+            let keyCode = obj.keyCode;
+            keyCode += obj.additionalKey ? obj.additionalKey : '';
+            return (
+                <Key
+                    name={obj.name}
+                    id={obj.id}
+                    class={obj.className}
+                    key={index}
+                    keyCode={keyCode}
+                    handleClick={handleClick}
+                />);
         });
 
         return (

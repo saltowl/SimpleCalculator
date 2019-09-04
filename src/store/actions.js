@@ -62,6 +62,14 @@ export const mapDispatchToProps = (dispatch) => {
         solve: (formula) => {
             const result = calculate(formula);
             dispatch(solve(result));
+        },
+        handleKeyPress: (event) => {
+            let str = event.keyCode;
+            str += event.shiftKey ? 'shiftKey' : '';
+            const key = document.getElementsByClassName(str)[0];
+            if (key) {
+                key.click();
+            }
         }
     };
 };

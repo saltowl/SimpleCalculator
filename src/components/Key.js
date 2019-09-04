@@ -17,7 +17,13 @@ class Key extends React.Component {
 
     render() {
         return (
-            <button id={this.props.id} className={'key ' + this.props.class} onClick={this.handleClick}>{this.props.name}</button>
+            <button
+                id={this.props.id}
+                className={'key ' + this.props.class + ' ' + this.props.keyCode}
+                onClick={this.handleClick}
+            >
+                {this.props.name}
+            </button>
         );
     }
 }

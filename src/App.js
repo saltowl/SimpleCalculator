@@ -17,6 +17,7 @@ class App extends React.Component {
               input={this.props.input}
               handleClick={this.props.handleClick}
               solve={this.props.solve}
+              handleKeyPress={this.props.handleKeyPress}
           />
         </div>
     );
