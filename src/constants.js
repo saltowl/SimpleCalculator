@@ -2,7 +2,8 @@ export const INITIAL_STATE = {
     'rootReducer': {
         'formula': 0,
         'input': 0,
-        'isPrevCalculate': false
+        'isPrevCalculate': false,
+        'addDecimal': false
     }
 };
 
@@ -37,3 +38,4 @@ export const ADD_NUM = 'ADD_NUM';
 export const ADD_OP = 'ADD_OP';
 export const ERASE = 'ERASE';
 export const SOLVE = 'SOLVE';
+export const DECIMAL = 'DECIMAL';

@@ -9,6 +9,7 @@ function rootReducer(state = cnst.INITIAL_STATE, action = {'type': 'default'}) {
         case cnst.ERASE:
             newState.input = 0;
             newState.formula = 0;
+            newState.addDecimal = false;
             return newState;
 
         case cnst.ADD_NUM:
@@ -26,6 +27,7 @@ function rootReducer(state = cnst.INITIAL_STATE, action = {'type': 'default'}) {
             return newState;
 
         case cnst.ADD_OP:
+            newState.addDecimal = false;
             if (state.isPrevCalculate) {
                 newState.formula = state.input;
             }
@@ -37,10 +39,27 @@ function rootReducer(state = cnst.INITIAL_STATE, action = {'type': 'default'}) {
             if (!state.isPrevCalculate) {
                 newState.formula = state.formula + '=' + action.result;
                 newState.input = action.result;
+                if (action.result.toString().indexOf('.') === -1) {
+                    newState.addDecimal = false;
+                }
                 newState.isPrevCalculate = true;
                 return newState;
             }
             return state;
+
+        case cnst.DECIMAL:
+            if (state.addDecimal) {
+                return state;
+            } else {
+                newState.addDecimal = true;
+                if (state.isPrevCalculate) {
+                    newState.input = '0';
+                    newState.formula = '0';
+                }
+                newState.input += '.';
+                newState.formula += '.';
+            }
+            return newState;
 
         default:
             return state;

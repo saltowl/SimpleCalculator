@@ -20,6 +20,12 @@ const erase = () => {
     };
 };
 
+const decimal = () => {
+    return {
+        type: cnst.DECIMAL
+    };
+};
+
 const solve = (result) => {
     return {
         type: cnst.SOLVE,
@@ -28,8 +34,7 @@ const solve = (result) => {
 };
 
 const calculate = (formula) => {
-    let value = formula.match(/(^[0-9*\/\\(\\)+-]+$)/);
-    let result = new Function('return ' + value );
+    let result = new Function('return ' + formula );
     return result();
 };
 
@@ -51,7 +56,7 @@ export const mapDispatchToProps = (dispatch) => {
             } else if (input === 'AC') {
                 dispatch(erase());
             } else if (input === '.') {
-
+                dispatch(decimal());
             }
         },
         solve: (formula) => {
