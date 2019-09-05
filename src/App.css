@@ -1,20 +1,63 @@
-#calculator {
-    --key-width: 50px;
-    --key-height: 40px;
-    --padding: 15px;
-
-    width: calc(var(--key-width) * 4 + 30px);
-    position: relative;
-    top: 20vh;
-    background-color: aliceblue;
-    padding-bottom: var(--padding);
-    padding-top: var(--padding);
-    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+@font-face {
+    font-family: "Digital";
+    src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot");
+    src: url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.woff") format("woff"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/8e22783d707ad140bffe18b2a3812529.svg#Digital-7") format("svg");
 }
 
-#display, input {
+html, .App {
+    background-color: #90AF97;
+    width: 100%;
+    height: 100%;
+}
+
+.App {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+#calculator {
+    --key-width: 80px;
+    --key-height: 50px;
+    --padding: 5px;
+    --font-size: 22px;
+
+    width: calc(var(--key-width) * 4 + 4 * var(--padding));
+    position: relative;
+    background-color: #E7D2BE;
+    padding: var(--padding);
+    border: var(--padding) #90AF97 outset;
+    box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.3);
+}
+
+#screen {
+    border: 5px #90AF97 ridge;
+    overflow-x: hidden;
+}
+
+#display, #formula {
     width: 100%;
     text-align: right;
+    background-color: #1D2543;
+    color: #E7D2BE;
+    padding: 0 var(--padding) 0 var(--padding);
+    font-family: digital;
+    overflow-x: hidden;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+
+#formula {
+    min-height: calc(var(--key-height) / 4);
+    font-size: var(--font-size);
+    color: #678F70;
+}
+
+#display {
+    height: calc(var(--key-height));
+    font-size: calc(var(--font-size) * 1.5);
 }
 
 .key {
@@ -22,10 +65,19 @@
     width: var(--key-width);
     height: var(--key-height);
     color: white;
+    font-size: calc(var(--font-size) * 0.75);
+    border: 4px #90AF97 ridge;
+}
+
+.key:hover {
+    border: 4px #1A4A25 ridge;
+    color: #1A4A25;
+    font-weight: bold;
+    box-shadow: none;
 }
 
 .clear {
-    background-color: chocolate;
+    background-color: #497553;
     width: calc(var(--key-width) * 2);
 }
 
@@ -37,13 +89,26 @@
     height: calc(var(--key-height) * 2);
     position: absolute;
     bottom: var(--padding);
-    background-color: coral;
+    background-color: #497553;
 }
 
 .nums {
-    background-color: grey;
+    background-color: #606780;
 }
 
 .ops {
-    background-color: cadetblue;
+    background-color: #9A7D61;
+}
+
+@media screen and (max-width: 340px) {
+    #calculator {
+        --key-width: 35px;
+        --key-height: 28px;
+        --padding: 5px;
+        --font-size: 8px;
+    }
+
+    #equals {
+        height: calc(var(--key-height) * 2 + 4px);
+    }
 }
