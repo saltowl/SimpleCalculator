@@ -13,7 +13,6 @@ class App extends React.Component {
         <div className="App">
           <Calculator
               formula={this.props.formula}
-              result={this.props.result}
               input={this.props.input}
               handleClick={this.props.handleClick}
               solve={this.props.solve}

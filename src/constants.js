@@ -36,8 +36,7 @@ export const keyboard = [
     CreateKey('=', 'equals', 'equals', 187),
 ];
 
-export const ADD_NUM = 'ADD_NUM';
-export const ADD_OP = 'ADD_OP';
 export const ERASE = 'ERASE';
-export const SOLVE = 'SOLVE';
-export const DECIMAL = 'DECIMAL';
+export const UPDATE_DISPLAY = 'UPDATE_DISPLAY';
+export const DIGIT_LIMIT_MET = 'DIGIT LIMIT MET';
+export const DIGIT_LIMIT = 18;
