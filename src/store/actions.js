@@ -73,7 +73,8 @@ export const mergeProps = (state, dispatchProps) => {
                 } else if (/[-+/*]/.test(currentInput)) {
                     // handle op
                     newState.addDecimal = false;
-                    if (/[+*-/]$/.test(state.formula) && currentInput !== '-') {
+                    if ((/[+*-/]$/.test(state.formula) && currentInput !== '-')
+                        || (/[-]$/.test(state.formula) && currentInput === '-')) {
                         newState.formula = state.formula.replace(/[+-/*]+$/, '');
                     }
                     if (state.isPrevCalculate) {
@@ -109,7 +110,10 @@ export const mergeProps = (state, dispatchProps) => {
             }
         },
         solve: () => {
-            const result = calculate(state.formula);
+            let result = calculate(state.formula);
+            if (result.toString().length > cnst.DIGIT_LIMIT) {
+                result = Number.parseFloat(result).toExponential(cnst.DIGIT_LIMIT - 6);
+            }
             if (!state.isPrevCalculate) {
                 newState.formula = state.formula + '=' + result;
                 newState.input = result;
